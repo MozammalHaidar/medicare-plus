@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-body bg-surface-muted text-ink antialiased transition-colors duration-300;
+}
+
+html.dark body {
+  @apply bg-darksurface text-white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-display;
+}
+
+/* Focus states for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #0D9C8F;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: #0D9C8F;
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #A3C2DC;
+  border-radius: 999px;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #1F3A5C;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Native form controls (select dropdowns, date pickers) render outside
+   Tailwind's normal styling reach — set color-scheme explicitly so
+   browsers pick readable text/background pairs for their native popups. */
+select,
+input[type='date'] {
+  color-scheme: light;
+}
+html.dark select,
+html.dark input[type='date'] {
+  color-scheme: dark;
+}
+select option {
+  color: #0F1B2D;
+  background-color: #FFFFFF;
+}
+html.dark select option {
+  color: #FFFFFF;
+  background-color: #101D2E;
+}
+
+/* Signature: Vital Line divider */
+.vital-line-path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 6 10;
+  animation: pulseLine 2.4s ease-in-out infinite;
+}
+
+.glass {
+  @apply bg-white/70 backdrop-blur-xl border border-white/40;
+}
+
+html.dark .glass {
+  @apply bg-darksurface-raised/60 border-white/10;
+}
+
+.container-app {
+  @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-12;
+}
